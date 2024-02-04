@@ -15,12 +15,14 @@ s.storedValues.two = 2
 s.storedValues.three = 3.0
 s.storedValues.cool = "shadow wizard money gang: we love casting spells!"
 VALUE = 0
+def refmimp(s:Store,line):
+    s.writeLine('out.txt',line)
 def run_func():
     global VALUE,s
     VALUE+=1
     if (VALUE==0): print("wow does this work!")
     # print(f'called #{VALUE}')
-    s.writeLine('out.txt',f'called #{VALUE}')
-
+    # s.writeLine('out.txt',f'called #{VALUE}')
+    refmimp(s,f'called #{VALUE}')
 if __name__ == '__main__':
     pass

@@ -12,6 +12,7 @@ StoredValues::~StoredValues() {
     //     this->dict[key] = boost::python::object();
     // }
     // this->dict = boost::python::dict();
+    this->dict.clear();
 }
 std::map<std::string, SD_TYPES > StoredValues::getValues() const {
     constexpr const boost::python::ssize_t FIRST{0};

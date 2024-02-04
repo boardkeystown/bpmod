@@ -15,7 +15,6 @@ private:
 private:
     boost::python::object main_module;
     boost::python::dict main_namespace;
-    boost::python::dict local_namespace;
     boost::python::object run_func;
 private:
     PSC_STATE state;

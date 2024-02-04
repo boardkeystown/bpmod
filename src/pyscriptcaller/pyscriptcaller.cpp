@@ -43,10 +43,9 @@ void PyScriptCaller::setup() {
             this->main_namespace);
         boost::python::exec_file(
             this->script_path.c_str(),
-            this->main_namespace,
-            this->local_namespace
+            this->main_namespace
         );
-        this->run_func = this->local_namespace.get(
+        this->run_func = this->main_namespace.get(
             this->func_name.c_str(),
             none
         );
@@ -78,9 +77,11 @@ PyScriptCaller::PyScriptCaller() {
     this->state = PSC_STATE::SETUP;
 }
 PyScriptCaller::~PyScriptCaller() {
-    // if (this->state== PSC_STATE::RUN) {
-    //     //do we need to unwind the call stack ?
-    // }
+    if (this->state== PSC_STATE::RUN) {
+        this->run_func = boost::python::object();
+        this->main_namespace.clear();
+        this->main_module = boost::python::object();
+    }
 }
 void PyScriptCaller::setScript(const std::string &script_path) {
     this->script_path = script_path;
