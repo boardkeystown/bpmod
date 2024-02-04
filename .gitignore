@@ -1,0 +1,8 @@
+*.e
+*.so
+.objects
+*.txt
+.vscode
+*.vscode_db
+make.mk
+*.pyi
